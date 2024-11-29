@@ -45,7 +45,7 @@ label{
 input{
     padding: 3px;
     font-size: 22px;
-    border: 2px solid rgba(0, 0, 0, 0.842);
+    border: 2px solid rgb(54, 40, 0);
     border-radius: 8px;
 }
 
