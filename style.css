@@ -76,6 +76,7 @@ li{
 }
 
 a{
+    color: blue;
     font-size: 22px;
     align-self: stretch;
     font-family:'Courier New', Courier, monospace;
