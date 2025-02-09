@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+<body style="padding-top: 100px;">
+        <form action="paginaLogin.html">
+            <label>Nome:</label><br>
+            <input type="text" id="name"><br><br>
+            <label >Email:</label><br>
+            <input type="text" id="email"><br><br>
+            <input type="submit" value="Cadastrar">
+        </form>
+        <button  value="Limpar" onclick="Limpar()">Limpar</button>
+        <button onclick="Cadastrar()">Cadastrar</button>
+        <button onclick="Delete()">Deletar</button>
+        <button onclick="DeleteAll()">Deletar All</button>
+        <button onclick="Pesquisa()">Pesquisa nome</button>
+        <ul id="linha">
+            <li id="data"></li>
+            <li id="pp"></li>
+            <li id="pp2"></li>
+        </ul>
+        <script>
+                let data = new Date();
+            function Cadastrar(){
+                
+           if (typeof(Storage) !== "undefined") {
+                let email=document.getElementById('email').value;
+                let name=document.getElementById('name').value;
+                
+                //obj=name;
+                //obj=email;
+                //obj=data;
+
+                let obj = [name,email,data];
+                let object = JSON.stringify(obj);
+                localStorage.setItem("stora",object);
+                let stora = localStorage.getItem('stora');
+                const storag = JSON.parse(stora)
+                console.log(stora);
+                document.getElementById("pp2").innerHTML = storag[1];
+                //localStorage.setItem("lastname", document.getElementById('name').value);
+                document.getElementById("pp").innerHTML = storag[0];
+                //localStorage.setItem("data", data);
+                document.getElementById("data").innerHTML = storag[2];
+            } 
+            else {
+                document.getElementById("pp").innerHTML = "Sorry, your browser does not support Web Storage...";
+            }
+
+            }
+            function Limpar(){
+                document.getElementById('name').value='';
+                document.getElementById('email').value ='';
+            }
+            function Delete(){
+                localStorage.removeItem(storag[1]);
+                document.getElementById("pp2").innerHTML =" ";
+            }
+            function DeleteAll(){
+                localStorage.clear();
+                document.getElementById("linha").innerHTML =" ";
+            }
+            function Pesquisa(){
+                document.getElementById("pp").innerHTML =  storag[0];
+                document.getElementById("pp2").innerHTML ="";
+                document.getElementById("data").innerHTML ="";
+            }
+        </script>
+</body>
+</html>
